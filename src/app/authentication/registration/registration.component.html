@@ -1,0 +1,16 @@
+<div class="registration-section">
+  <form [formGroup]="registrationForm" (ngSubmit)="registerUser()" class="registration-form">
+    <div class="header">Sign Up</div>
+    <div class="form-content">
+      <input class="form-items" [formControlName]="'firstName'" placeholder="FirstName">
+      <input class="form-items" [formControlName]="'lastName'" placeholder="LastName">
+      <input type="email" class="form-items" [formControlName]="'email'" placeholder="Email">
+      <input #password type="password" class="form-items" [formControlName]="'password'" placeholder="Password"
+        (keyup)="matchPassword(confirmPassword.value,password.value)">
+      <input #confirmPassword type="password" class="form-items" [formControlName]="'confirmPassword'" placeholder="Confirm Password"
+        (keyup)="matchPassword(confirmPassword.value,password.value)">
+      <button [disabled]="!registrationForm.valid || !matchedPassword" class="form-items" type="submit">submit</button>
+      <a [routerLink]="['/authentication/login']">Login</a>
+    </div>
+  </form>
+</div>
